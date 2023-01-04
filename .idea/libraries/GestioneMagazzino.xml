@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="GestioneMagazzino">
+    <CLASSES>
+      <root url="jar://$PROJECT_DIR$/GestioneMagazzino.zip!/" />
+      <root url="jar://$PROJECT_DIR$/GestioneMagazzino (2).zip!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

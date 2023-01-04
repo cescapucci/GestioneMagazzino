@@ -1,0 +1,126 @@
+package gestione.prodotti;
+
+
+import java.io.Serializable;
+import java.util.Arrays;
+
+public class Magazzino implements Serializable
+{
+	private final int DIMENSIONE = 10;
+	private Prodotto prodotti[];
+
+	public Magazzino () {
+		prodotti = new Prodotto [DIMENSIONE];
+		
+	}
+	public Magazzino(Magazzino m1) {
+		prodotti = new Prodotto[DIMENSIONE];
+		try {
+			for(int i = 0; i < DIMENSIONE; i++ ) {
+				if(m1.getProdotto(i) != null)
+					prodotti[i] = m1.getProdotto(i);
+			}
+		}
+		catch(NullPointerException eccezione) {
+			System.out.println("Vuoto");
+		}
+	}
+	public Prodotto getProdotto(int posizione) {
+		if(posizione>0 && posizione < DIMENSIONE)
+			return prodotti[posizione];
+	
+	else
+		return null;
+	}
+
+	public int getDIMENSIONE() {
+		return DIMENSIONE;
+	}
+
+	public void aggiungiProdotto(Prodotto p1, int posizione) {
+		try {	
+			if(prodotti[posizione] == null) {
+				prodotti[posizione] = new Prodotto(p1);
+				System.out.println("Prodotto Aggiunto");
+				
+			}
+			else
+				System.out.println("Spazio Occupato");
+		}
+		catch(ArrayIndexOutOfBoundsException exception) {
+			System.out.println("Posizione non valida");
+		}	
+	}
+
+	public void rimuoviProdotto(String seriale) {
+		try {
+			for(int i = 0; i < DIMENSIONE; i++)
+				if(prodotti[i].getSeriale().equals(seriale)){
+					prodotti[i] = null;
+					System.out.println("Prodotto Rimosso");
+				}
+				else
+					System.out.println("Prodotto Non Trovato");
+		}
+		catch(ArrayIndexOutOfBoundsException exception) {}
+		catch(NullPointerException exception) {}
+	}
+	
+	public void modificaProdotto(Prodotto p1,Prodotto p2) {
+		try {
+			for(int i = 0; i < DIMENSIONE; i++)
+				if(p1.getSeriale().equals(prodotti[i].getSeriale())){
+					prodotti[i] = new Prodotto(p2);
+					System.out.println("Prodotto Modificato");
+				}
+				else
+					System.out.println("Prodotto Non Trovato");
+		}
+		catch(ArrayIndexOutOfBoundsException exception) {}
+		catch(NullPointerException exception) {}
+	}
+	
+	public void visualizzaProdotto(String ricerca,Magazzino magazzino) {
+		boolean trova = false;
+		int j = 0;
+		for(int i = 0; i < DIMENSIONE; i++) 
+		{
+			try 
+			{
+	            if(magazzino.getProdotto(i).getSeriale().equals(ricerca)) 
+	            {
+	            	trova = true;
+	            	j=i;
+	            	
+	            }
+	            else 
+	            	trova = false;
+			}
+			catch(NullPointerException exception) {}
+			catch(ArrayIndexOutOfBoundsException exception) {}
+		}
+	            if(trova == true) 
+	            {
+	            	System.out.print("Posizione " + j + " : " + getProdotto(j).getMarca() + " ");
+					System.out.print(magazzino.getProdotto(j).getModello() + " ");
+					System.out.print(magazzino.getProdotto(j).getSeriale() + " ");
+					System.out.print(magazzino.getProdotto(j).getQuantità() + " ");
+					System.out.print(magazzino.getProdotto(j).getPrezzo() + " ");
+					System.out.print(magazzino.getProdotto(j).isDisponibilità() + " ");
+					System.out.print(magazzino.getProdotto(j).getDescrizione_prodotto() + " ");
+					System.out.print(magazzino.getProdotto(j).getEtà_minima() + " ");
+					System.out.println(magazzino.getProdotto(j).getMesi_garanzia() + " ");
+					trova = false;
+	            }
+	            else
+	            	System.out.println("Prodotto non trovato");
+
+	}
+
+	@Override
+	public String toString() {
+		return "Magazzino{" +
+				"prodotti=" + Arrays.toString(prodotti) +
+				'}';
+	}
+}

@@ -1,9 +1,12 @@
 package gestione.prodotti;
-import com.diogonunes.jcolor.AnsiFormat;
-import static com.diogonunes.jcolor.Ansi.colorize;
-import static com.diogonunes.jcolor.Attribute.*;
+
+import gestione.colori.AnsiFormat;
 import gestione.salvataggio.Serializzazione;
+
 import java.util.Scanner;
+
+import static gestione.colori.Ansi.colorize;
+import static gestione.colori.Attribute.*;
 
 public class Main
 {
@@ -89,7 +92,9 @@ public class Main
 					System.out.println(colorize("Hai scelto l'opzione #2", opzione));
 					System.out.println(colorize("Immetti Seriale", immettiDati));
 	                seriale = in.nextLine();
-	                magazzino.rimuoviProdotto(seriale);
+					System.out.println(colorize("Immetti Quantità", immettiDati));
+					quantità = Integer.parseInt(in.nextLine());
+	                magazzino.rimuoviProdotto(seriale,quantità);
 	                //
 	                break;
 	

@@ -1,12 +1,16 @@
 package gestione.prodotti;
-import com.diogonunes.jcolor.AnsiFormat;
-import static com.diogonunes.jcolor.Ansi.colorize;
-import static com.diogonunes.jcolor.Attribute.*;
+
+import gestione.colori.AnsiFormat;
 import gestione.salvataggio.Serializzazione;
-import java.io.Serializable;
-import java.util.Arrays;
+
 import java.util.Scanner;
 
+import static gestione.colori.Ansi.colorize;
+import static gestione.colori.Attribute.*;
+
+import gestione.colori.*;
+import java.io.Serializable;
+import java.util.Scanner;;
 
 public class Magazzino implements Serializable
 {
@@ -96,7 +100,7 @@ public class Magazzino implements Serializable
 				{
 					trova = true;
 					prodotti[i].setQuantità(prodotti[i].getQuantità() + quantità );
-					System.out.println(System.out.println(colorize("Prodotto aggiornato di quantità\n", corretto));
+					System.out.println(colorize("Quantità del prodotto aggiornata\n", errore));
 				}else
 					trova = false;
 
@@ -146,7 +150,7 @@ public class Magazzino implements Serializable
 	 * rimuove il prodotto che si vuole rimuovere e stampa se lo ha rimosso o no
 	 * @param cerca
 	 */
-	public void rimuoviProdotto(String cerca)
+	public void rimuoviProdotto(String cerca, int quantità)
 	{
 		boolean trova = false,quantitàMetodoRimuovi = true;
 		for(int i = 0; i < DIMENSIONE; i++) {
@@ -154,15 +158,15 @@ public class Magazzino implements Serializable
 			{
 				if(prodotti[i].getSeriale().equals(cerca))
 				{
-					if(prodotti[i].getQuantità() > 1 && prodotti[i].getQuantità() > quantitàMetodoRimuovi)
+					if((prodotti[i].getQuantità() > 1) && prodotti[i].getQuantità() > quantità)
 					{
-						prodotti[i].setQuantità(prodotti[i].getQuantità() - quantitàMetodoRimuovi );
+						prodotti[i].setQuantità(prodotti[i].getQuantità() - quantità);
 						trova = true;
 					}
-					else if(prodotti[i].getQuantità() < quantitàMetodoRimuovi)
+					else if(prodotti[i].getQuantità() < quantità)
 					{
-						System.out.println(Colorize("Impossibile eliminare più di " + prodotti[i].getQuantità() +
-								" prodotti\n"),errore);
+						System.out.println("Impossibile eliminare più di " + prodotti[i].getQuantità() +
+								" prodotti\n");
 						trova = false;
 						quantitàMetodoRimuovi = false;
 					}else
@@ -178,7 +182,7 @@ public class Magazzino implements Serializable
 			catch(NullPointerException exception) {}
 		}
 		if (trova == true && quantitàMetodoRimuovi == true)
-			System.out.println(Colorize("Prodotto Rimosso\n"),corretto);
+			System.out.println(colorize("Prodotto  rimosso\n", corretto));
 		else if(trova == false && quantitàMetodoRimuovi == true)
 			System.out.println(colorize("Prodotto non trovato\n", errore));
 	}
@@ -238,63 +242,64 @@ public class Magazzino implements Serializable
 								System.out.println("Immetti nuova marca ");
 								String marca = in.nextLine();
 								prodotti[i].setMarca(marca);
-								System.out.println(Colorize("Modifica effettuata\n"),corretto);
+								System.out.println(colorize("Modifica effettuata\n", corretto));
 								break;
 							case 2:
 								System.out.println("Immetti nuovo modello ");
 								String modello = in.nextLine();
 								prodotti[i].setModello(modello);
-								System.out.println(Colorize("Modifica effettuata\n"),corretto);
+								System.out.println(colorize("Modifica effettuata\n", corretto));
 								break;
 							case 3:
 								System.out.println("Immetti nuovo seriale ");
 								String seriale = in.nextLine();
 								prodotti[i].setSeriale(seriale);
-								System.out.println(Colorize("Modifica effettuata\n"),corretto);
+								System.out.println(colorize("Modifica effettuata\n", corretto));
 								break;
 							case 4:
 								System.out.println("Immetti nuova quantità ");
 								int quantità = in.nextInt();
 								prodotti[i].setQuantità(quantità);
-								System.out.println(Colorize("Modifica effettuata\n"),corretto);
+								System.out.println(colorize("Modifica effettuata\n", corretto));
 								break;
 							case 5:
 								System.out.println("Immetti nuovo prezzo ");
 								double prezzo = in.nextDouble();
 								prodotti[i].setPrezzo(prezzo);
-								System.out.println(Colorize("Modifica effettuata\n"),corretto);
+								System.out.println(colorize("Modifica effettuata\n", corretto));
 								break;
 
 							case 6:
 								System.out.println("Immetti nuova descrizione ");
 								String descrizioneProdotto = in.nextLine();
 								prodotti[i].setDescrizioneProdotto(descrizioneProdotto);
-								System.out.println(Colorize("Modifica effettuata\n"),corretto);
+								System.out.println(colorize("Modifica effettuata\n", corretto));
 								break;
 							case 7:
 								System.out.println("Immetti nuova età minima ");
 								int etàMinima = in.nextInt();
 								prodotti[i].setEtàMinima(etàMinima);
-								System.out.println(Colorize("Modifica effettuata\n"),corretto);
+								System.out.println(colorize("Modifica effettuata\n", corretto));
 								break;
 							case 8:
 								System.out.println("Immetti nuova garanzia ");
 								int mesiGaranzia = in.nextInt();
 								prodotti[i].setMesiGaranzia(mesiGaranzia);
-								System.out.println(Colorize("Modifica effettuata\n"),corretto);
+								System.out.println(colorize("Modifica effettuata\n", corretto));
 								break;
 							case 0:
 								quit = true;
 								break;
 
 							default:
-								System.out.println(Colorize("Scegli un numero valido\n"),errore);
+								System.out.println(colorize("Scegli un numero valido\n", errore));
+
 						}
 
 					}
 
 				}else
-					System.out.println(Colorize("Prodotto Non Trovato\n"),errore);
+					System.out.println(colorize("Prodotto non trovato\n", errore));
 			}
 
 			catch(ArrayIndexOutOfBoundsException exception) {}
@@ -334,7 +339,7 @@ public class Magazzino implements Serializable
 			System.out.println("Mesi di garanzia = " + getProdotto(j).getMesiGaranzia() + "\n");
 
 		}else
-			System.out.println(colorize("Prodotto non trovato\n"),errore);
+			System.out.println(colorize("Prodotto non trovato\n", errore));
 	}
 
 }

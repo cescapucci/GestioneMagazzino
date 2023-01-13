@@ -1,6 +1,5 @@
 package gestione.prodotti;
 
-
 import java.io.Serializable;
 
 public class Prodotto implements Serializable

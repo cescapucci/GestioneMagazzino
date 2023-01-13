@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
-      <module fileurl="file://$PROJECT_DIR$/.idea/GestioneMagazzino.iml" filepath="$PROJECT_DIR$/.idea/GestioneMagazzino.iml" />
+      <module fileurl="file://$PROJECT_DIR$/GestioneMagazzinoSecondaIterazione.iml" filepath="$PROJECT_DIR$/GestioneMagazzinoSecondaIterazione.iml" />
     </modules>
   </component>
 </project>

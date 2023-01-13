@@ -14,8 +14,20 @@ public class Prodotto implements Serializable
 	private String descrizioneProdotto;
 	private int etàMinima;
 	private int mesiGaranzia;
-	
-	public Prodotto(String marca, String modello, String seriale, int quantità, double prezzo, String descrizioneProdotto, int etàMinima, int mesiGaranzia) 
+
+	/**
+	 * costruttore di default
+	 * @param marca
+	 * @param modello
+	 * @param seriale
+	 * @param quantità
+	 * @param prezzo
+	 * @param descrizioneProdotto
+	 * @param etàMinima
+	 * @param mesiGaranzia
+	 */
+
+	public Prodotto(String marca, String modello, String seriale, int quantità, double prezzo, String descrizioneProdotto, int etàMinima, int mesiGaranzia)
 	{
 		setMarca(marca);
 		setModello(modello);
@@ -27,7 +39,11 @@ public class Prodotto implements Serializable
 		setEtàMinima(etàMinima);
 		setMesiGaranzia(mesiGaranzia);
 	}
-	
+
+	/**
+	 * costruttore di copia
+	 * @param p1
+	 */
 	public Prodotto(Prodotto p1)
 	{
 		setMarca(p1.getMarca());
@@ -39,92 +55,160 @@ public class Prodotto implements Serializable
 		setEtàMinima(p1.getEtàMinima());
 		setMesiGaranzia(p1.getMesiGaranzia());
 	}
-	
-	public String getMarca() 
+
+	/**
+	 * ritorna la marca
+	 * @return marca
+	 */
+	public String getMarca()
 	{
 		return marca;
 	}
-	
-	public void setMarca(String marca) 
+
+	/**
+	 * setta la marca
+	 * @param marca
+	 */
+	public void setMarca(String marca)
 	{
 		this.marca = marca;
 	}
-	
+
+	/**
+	 * ritorna il modello
+	 * @return modello
+	 */
 	public String getModello()
 	{
 		return modello;
 	}
-	
-	public void setModello(String modello) 
+
+	/**
+	 * setta il modello
+	 * @param modello
+	 */
+	public void setModello(String modello)
 	{
 		this.modello = modello;
 	}
-	
-	public String getSeriale() 
+
+	/**
+	 * ritorna il seriale
+	 * @return seriale
+	 */
+	public String getSeriale()
 	{
 		return seriale;
 	}
-	
-	public void setSeriale(String seriale) 
+
+	/**
+	 * setta il seriale
+	 * @param seriale
+	 */
+	public void setSeriale(String seriale)
 	{
 		this.seriale = seriale;
 	}
-	
-	public int getQuantità() 
+
+	/**
+	 * ritorna la quantità
+	 * @return quantità
+	 */
+	public int getQuantità()
 	{
 		return quantità;
 	}
-	
-	public void setQuantità(int quantità) 
+
+	/**
+	 * setta la quantità
+	 * @param quantità
+	 */
+	public void setQuantità(int quantità)
 	{
 		this.quantità = quantità;
 	}
-	
-	public double getPrezzo() 
+
+	/**
+	 * ritorna il prezzo
+	 * @return prezzo
+	 */
+	public double getPrezzo()
 	{
 		return prezzo;
 	}
-	
+
+	/**
+	 * setta il prezzo
+	 * @param prezzo
+	 */
 	public void setPrezzo(double prezzo)
 	{
 		this.prezzo = prezzo;
 	}
-	
+
+	/**
+	 * ritorna la disponibilità
+	 * @return disponibilità
+	 */
 	public boolean isDisponibilità()
 	{	if(quantità > 0)
-			disponibilità = true;
+		disponibilità = true;
 		return disponibilità;
 	}
 	
 	/*public void setDisponibilità(boolean disponibilità) {
 		this.disponibilità = disponibilità;
 	}*/
-	
-	public String getDescrizioneProdotto() 
+
+	/**
+	 * ritorna la descrizione del prdodotto
+	 * @return prodotto
+	 */
+	public String getDescrizioneProdotto()
 	{
 		return descrizioneProdotto;
 	}
-	
-	public void setDescrizioneProdotto(String descrizioneProdotto) 
+
+	/**
+	 * setta la descrizione del prodotto
+	 * @param descrizioneProdotto
+	 */
+	public void setDescrizioneProdotto(String descrizioneProdotto)
 	{
 		this.descrizioneProdotto = descrizioneProdotto;
 	}
-	
-	public int getEtàMinima() 
+
+	/**
+	 * ritorna l'età minima
+	 * @return etàmi nima
+	 */
+	public int getEtàMinima()
 	{
 		return etàMinima;
 	}
-	
-	public void setEtàMinima(int etàMinima) 
+
+	/**
+	 * setta l'età minima
+	 * @param etàMinima
+	 */
+	public void setEtàMinima(int etàMinima)
 	{
 		this.etàMinima = etàMinima;
 	}
-	
+
+	/**
+	 * ritorna i mesi di garnazia
+	 * @return mesi di garanzia
+	 */
 	public int getMesiGaranzia()
 	{
 		return mesiGaranzia;
 	}
-	
+
+	/**
+	 * setta i mesi di garanzia
+	 * @param mesiGaranzia
+	 */
 	public void setMesiGaranzia(int mesiGaranzia)
 	{
 		this.mesiGaranzia = mesiGaranzia;

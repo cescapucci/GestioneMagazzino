@@ -1,0 +1,10 @@
+<component name="libraryTable">
+  <library name="diogonunes.JColor" type="repository">
+    <properties maven-id="com.diogonunes:JColor:5.5.1" />
+    <CLASSES>
+      <root url="jar://$MAVEN_REPOSITORY$/com/diogonunes/JColor/5.5.1/JColor-5.5.1.jar!/" />
+    </CLASSES>
+    <JAVADOC />
+    <SOURCES />
+  </library>
+</component>

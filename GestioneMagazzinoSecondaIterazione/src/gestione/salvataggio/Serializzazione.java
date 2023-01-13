@@ -5,30 +5,43 @@ import java.io.*;
 
 public class Serializzazione implements Serializable
 {
+    /**
+     * costruttore di default
+     */
     public Serializzazione() {
     }
 
-    public void salvaProdotti (Magazzino magazzino) throws IOException{
-        ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("prodotti.bin"));
-        for (int i=0; i< magazzino.getDIMENSIONE(); i++){
-            stream.writeObject(magazzino.getProdotto(i));
+    /**
+     * serializzazione
+     * @param magazzino
+     * @throws java.io.IOException
+     */
+    public void salvaProdotti (Magazzino magazzino) throws java.io.IOException{
+        try
+        {
+            ObjectOutputStream stream = new ObjectOutputStream(new FileOutputStream("prodotti.bin"));
+            stream.writeObject(magazzino);
+            stream.close();
         }
-        stream.close();
+        catch(Exception eccezione) {}
     }
 
-    public Magazzino caricaProdotti () throws IOException{
-        ObjectInputStream stream = new ObjectInputStream(new FileInputStream("volumi.bin"));
+    /** deserializzazione
+     * @return
+     * @throws java.io.IOException
+     */
+    public Magazzino caricaProdotti () throws java.io.IOException{
         Magazzino carica = new Magazzino();
-        //try{
-            for (int i=0; i< carica.getDIMENSIONE(); i++){
-               // carica.aggiungiProdotto((Prodotto)stream.readObject(),i);
+        try {
+            ObjectInputStream stream = new ObjectInputStream(new FileInputStream("prodotti.bin"));
+            carica = (Magazzino)stream.readObject();
+            stream.close();
+        }
+        catch(Exception e){
+            System.out.println("Errore " + e.getMessage());
 
-            }
-        //}
-        //catch(ClassNotFoundException exception){
+        }
 
-        //}
-        stream.close();
         return carica;
     }
 
